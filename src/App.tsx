@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.sass';
+import Menu from './menu';
+import Game from './game';
+import { RootState } from './store/store';
+import { connect } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface StateProps {
+  started: boolean;
+  paused: boolean;
+  finished: boolean;
 }
 
-export default App;
+function App({
+  started, paused, finished
+} : StateProps) {
+  return (
+    <div className="App">
+      {!started && !paused && !finished && <Menu />}
+      {started && <Game />}
+    </div>
+  );
+};
+
+const mapState = (state: RootState) : StateProps => ({
+  started: state.game.started,
+  paused: state.game.paused,
+  finished: state.game.finished
+});
+
+export default connect(
+  mapState
+)(App);
