@@ -7,3 +7,13 @@ export const pauseGame = () : GameAction => ({
 export const resumeGame = () : GameAction => ({
   type: "resume"
 });
+
+export const addPoints = (points: number) : GameAction=> ({
+  type: "addScore",
+  score: points
+})
+
+export const reducePoints = (points: number) : GameAction=> ({
+  type: "removeScore",
+  score: points
+})

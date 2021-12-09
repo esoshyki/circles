@@ -20,3 +20,31 @@ body
   justify-content: center
   align-items: center
   border: 1px solid #fff
+
+#game
+  position: relative
+  top: 0
+  width: 100%
+  height: 100%
+
+.circle
+  position: absolute
+  animation: circle 2.5s linear 0s
+
+.cached
+  animation: catched 1s linear 0s !important
+
+@keyframes catched
+  0%
+    transform: scale(1)
+  100%
+    transform: scale(0)
+
+@keyframes circle
+  0%
+    transform: scale(0)
+  50%
+    transform: scale(1.5)
+  100%
+    transform: scale(0)
+
