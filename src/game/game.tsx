@@ -38,7 +38,8 @@ function Circle ({
 
   return (
     <div 
-      onAnimationEnd={() => catchCircle("" + created, catched ? 10 : 0)}
+      onClick={() => catchCircle("" + created, 10)}
+      onAnimationEnd={() => catchCircle("" + created, 0)}
       className={classes.circle} 
       style={{
         left: `${left}%`,
