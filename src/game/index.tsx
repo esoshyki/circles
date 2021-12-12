@@ -6,6 +6,7 @@ import { Chip } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import Game from './game';
 
+
 interface State {
   intencity: number,
   level: number,
@@ -41,15 +42,6 @@ const GameComponent = ({
     }
   }
 
-  useEffect(() => {
-    const game = new Game(intencity, setPoints);
-
-    game.start()
-
-    return game.finish;
-
-  }, [intencity])
-
   return (
     <div className={classes.root} ref={fieldRef}>
       <div className={classes.info}>
@@ -57,7 +49,7 @@ const GameComponent = ({
         <Chip label={"Интенсивность " + intencity} />
         <Chip label={"Счет " + score + " баллов"} />
         </div>
-      <div className={classes.game} id="game"></div>
+      <Game started={true} finished={false} paused={false} />
     </div>)
 };
 
